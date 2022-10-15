@@ -1,6 +1,8 @@
 @use "mixins";
 
 $background-light-mode: #fff;
+$shadow-header-light-mode:0 5px 10px rgba(20, 20, 20, 0.2);
+$shadow-footer-light-mode:0 -5px 10px rgba(20, 20, 20, 0.2);
 $color-light-mode:#000;
 
 $background-dark-mode: rgb(40, 40, 40);
@@ -21,9 +23,14 @@ a{
 }
 
 header{
-    //background-color: aquamarine;
-    box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
     padding: 10px 0;
+    box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+
+    body.bright &{
+        background-color: $background-light-mode;
+        color: $color-light-mode;
+        box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+    }
 
     body.dark &{
         background-color: $background-header-dark-mode;
@@ -46,6 +53,11 @@ header{
 main{
     display: flex;
 
+    body.bright &{
+        background-color: $background-light-mode;
+        color: $color-light-mode;
+    }
+
     body.dark &{
         background-color: $background-dark-mode;
         color: $color-dark-mode;
@@ -55,7 +67,6 @@ main{
         @include mixins.size(20%);
 
         .sider{
-            //background-color: yellowgreen;
             position: sticky;
             top: 20px;
             margin-left: 10px;
@@ -80,19 +91,32 @@ main{
     }
 
     .modes{
-        @include mixins.size(10%, 10%);
-        background-color: royalblue;
-        position: fixed;
-        bottom: 30px;
-        right: 0px;
-        border-radius: 20% 0% 0% 20%;
-
         section{
             text-align: center;
+            @include mixins.size(10%, 10%);
+            background-color: royalblue;
+            position: fixed;
+            bottom: 30px;
+            right: 0px;
+            border-radius: 20px 0% 0% 20px;
+
+            body.bright &{
+                background-color: $background-dark-mode;
+                color: $color-dark-mode;
+            }
+        
+            body.dark &{
+                background-color: $background-light-mode;
+                color: $color-light-mode;
+            }
 
             p{
                 @include mixins.font(18px);
             }
+        }
+
+        section:hover{
+            cursor: pointer;
         }
     }
 
@@ -117,9 +141,13 @@ main{
 }
 
 footer{
-    //background-color: rosybrown;
-    box-shadow: 0 -5px 10px rgba(20, 20, 20, 0.2);
     padding: 20px 0;
+
+    body.bright &{
+        background-color: $background-light-mode;
+        color: $color-light-mode;
+        box-shadow: $shadow-footer-light-mode;
+    }
 
     body.dark &{
         background-color: $background-header-dark-mode;

@@ -37,3 +37,18 @@ document.getElementById("btn8").addEventListener("click", function() {
 document.getElementById("btn9").addEventListener("click", function() {
     document.getElementById('section9').scrollIntoView({behavior: "smooth"})
 });
+
+
+document.getElementById("light_mode").addEventListener("click", function() {
+    if (document.getElementById("body").classList=="dark"){
+
+        document.getElementById('body').classList.remove("dark");
+        document.getElementById('body').classList.add("bright");
+        console.log('noir -> blanc')
+    }else{
+
+        document.getElementById('body').classList.remove("bright");
+        document.getElementById('body').classList.add("dark");
+        console.log('blanc -> noir')
+    }
+});

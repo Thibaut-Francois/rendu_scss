@@ -21,8 +21,13 @@ a {
 }
 
 header {
-  box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
   padding: 10px 0;
+  box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+}
+body.bright header {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
 }
 body.dark header {
   background-color: rgb(60, 60, 60);
@@ -42,6 +47,10 @@ header .title h2 {
 
 main {
   display: flex;
+}
+body.bright main {
+  background-color: #fff;
+  color: #000;
 }
 body.dark main {
   background-color: rgb(40, 40, 40);
@@ -70,21 +79,30 @@ main .aside .sider ul li:hover {
 main .aside .sider ul li:nth-child(11) {
   text-align: center;
 }
-main .modes {
+main .modes section {
+  text-align: center;
   width: 10%;
   height: 10%;
   background-color: royalblue;
   position: fixed;
   bottom: 30px;
   right: 0px;
-  border-radius: 20% 0% 0% 20%;
+  border-radius: 20px 0% 0% 20px;
 }
-main .modes section {
-  text-align: center;
+body.bright main .modes section {
+  background-color: rgb(40, 40, 40);
+  color: #fff;
+}
+body.dark main .modes section {
+  background-color: #fff;
+  color: #000;
 }
 main .modes section p {
   font-size: 18px;
   font-weight: 500;
+}
+main .modes section:hover {
+  cursor: pointer;
 }
 main .content {
   width: 80%;
@@ -107,8 +125,12 @@ main .content section p {
 }
 
 footer {
-  box-shadow: 0 -5px 10px rgba(20, 20, 20, 0.2);
   padding: 20px 0;
+}
+body.bright footer {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 -5px 10px rgba(20, 20, 20, 0.2);
 }
 body.dark footer {
   background-color: rgb(60, 60, 60);
