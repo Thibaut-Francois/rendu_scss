@@ -1,7 +1,139 @@
+@use "mixins";
+
+$background-light-mode: #fff;
+$color-light-mode:#000;
+
+$background-dark-mode: rgb(40, 40, 40);
+$background-header-dark-mode: rgb(60, 60, 60);
+$shadow-dark-mode : 0 -5px 10px rgba(0, 0, 0, 0.2);
+$color-dark-mode:#fff;
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 16px;
+    @include mixins.font(20px);
     font-family: sans-serif;
+}
+
+a{
+    @include mixins.font(18px);
+}
+
+header{
+    //background-color: aquamarine;
+    box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+    padding: 10px 0;
+
+    body.dark &{
+        background-color: $background-header-dark-mode;
+        color: $color-dark-mode;
+    }
+
+    .title{
+        text-align: center;
+
+        h1{
+            @include mixins.font(60px, 800);
+        }
+
+        h2{
+            @include mixins.font(35px);
+        }
+    }
+}
+
+main{
+    display: flex;
+
+    body.dark &{
+        background-color: $background-dark-mode;
+        color: $color-dark-mode;
+    }
+
+    .aside{
+        @include mixins.size(20%);
+
+        .sider{
+            //background-color: yellowgreen;
+            position: sticky;
+            top: 20px;
+            margin-left: 10px;
+            margin-top: 20px;
+
+            ul{
+                li{
+                    @include mixins.font(18px);
+                    margin: 8px 0;
+                }
+
+                li:hover{
+                    cursor:pointer;
+                    text-decoration: underline;
+                }
+
+                li:nth-child(11) {
+                    text-align: center
+                }
+            }
+        }
+    }
+
+    .modes{
+        @include mixins.size(10%, 10%);
+        background-color: royalblue;
+        position: fixed;
+        bottom: 30px;
+        right: 0px;
+        border-radius: 20% 0% 0% 20%;
+
+        section{
+            text-align: center;
+
+            p{
+                @include mixins.font(18px);
+            }
+        }
+    }
+
+    .content{
+        @include mixins.size(80%);
+        margin: 30px 10px;
+
+        section{
+            @include mixins.size(85%);
+            margin: 20px 0;
+
+            h3{
+                @include mixins.font(20px, 800);
+            }
+
+            p{
+                @include mixins.font(20px);
+                margin: 5px 0;
+            }
+        }
+    }
+}
+
+footer{
+    //background-color: rosybrown;
+    box-shadow: 0 -5px 10px rgba(20, 20, 20, 0.2);
+    padding: 20px 0;
+
+    body.dark &{
+        background-color: $background-header-dark-mode;
+        color: $color-dark-mode;
+        box-shadow: $shadow-dark-mode;
+
+        p{
+            a{
+                color: $color-dark-mode;
+            }
+        }
+    }
+
+    p{
+        text-align: center;
+    }
 }

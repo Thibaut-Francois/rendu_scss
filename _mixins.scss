@@ -1,0 +1,17 @@
+@mixin font($size, $weight:500) {
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin size($width:auto, $height:auto) {
+    width: $width;
+    height: $height;
+}
+/*
+@mixin modes() {
+    body.dark &{
+        background-color: $background-dark-mode;
+        color: $color-dark-mode;
+    }
+}
+*/
