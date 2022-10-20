@@ -1,3 +1,5 @@
+@use "vars" as *;
+
 @mixin font($size, $weight:500) {
     font-size: $size;
     font-weight: $weight;
@@ -7,11 +9,29 @@
     width: $width;
     height: $height;
 }
-/*
-@mixin modes() {
+
+@mixin light_mode() {
+    body.bright &{
+        color: $color-light-mode;
+        @content;
+
+        // @media screen and (max-width: 900px) {
+        //     font-size: 16px;
+        //     background-color: red;
+        // }
+    } 
+}
+
+@mixin dark_mode() {
     body.dark &{
-        background-color: $background-dark-mode;
         color: $color-dark-mode;
+        @content;
+    } 
+}
+
+
+@mixin responsive($width) {
+    @media screen and (max-width : $width) {
+        @content
     }
 }
-*/

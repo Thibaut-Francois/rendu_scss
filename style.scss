@@ -1,14 +1,5 @@
+@use "vars" as *;
 @use "mixins";
-
-$background-light-mode: #fff;
-$shadow-header-light-mode:0 5px 10px rgba(20, 20, 20, 0.2);
-$shadow-footer-light-mode:0 -5px 10px rgba(20, 20, 20, 0.2);
-$color-light-mode:#000;
-
-$background-dark-mode: rgb(40, 40, 40);
-$background-header-dark-mode: rgb(60, 60, 60);
-$shadow-dark-mode : 0 -5px 10px rgba(0, 0, 0, 0.2);
-$color-dark-mode:#fff;
 
 *{
     margin: 0;
@@ -23,18 +14,18 @@ a{
 }
 
 header{
-    padding: 10px 0;
+    padding: 15px 0;
     box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+    @include mixins.size(100%);
 
-    body.bright &{
-        background-color: $background-light-mode;
-        color: $color-light-mode;
+    @include mixins.light_mode(){
         box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
+        background-color: $background-header-light-mode;
     }
 
-    body.dark &{
+    @include mixins.dark_mode(){
+        box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
         background-color: $background-header-dark-mode;
-        color: $color-dark-mode;
     }
 
     .title{
@@ -42,10 +33,16 @@ header{
 
         h1{
             @include mixins.font(60px, 800);
+            @include mixins.responsive(900px){
+                font-size: 30px;
+            }
         }
 
         h2{
             @include mixins.font(35px);
+            @include mixins.responsive(900px){
+                font-size: 25px;
+            }
         }
     }
 }
@@ -53,18 +50,26 @@ header{
 main{
     display: flex;
 
-    body.bright &{
-        background-color: $background-light-mode;
-        color: $color-light-mode;
+    @include mixins.responsive(900px){
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
     }
 
-    body.dark &{
+    @include mixins.light_mode(){
+        background-color: $background-light-mode;
+    }
+
+    @include mixins.dark_mode(){
         background-color: $background-dark-mode;
-        color: $color-dark-mode;
     }
 
     .aside{
         @include mixins.size(20%);
+
+        @include mixins.responsive(900px){
+            display: none;
+        }
 
         .sider{
             position: sticky;
@@ -93,25 +98,57 @@ main{
     .modes{
         section{
             text-align: center;
-            @include mixins.size(10%, 10%);
-            background-color: royalblue;
+            @include mixins.size(5%, 10%);
             position: fixed;
             bottom: 30px;
             right: 0px;
             border-radius: 20px 0% 0% 20px;
 
-            body.bright &{
-                background-color: $background-dark-mode;
-                color: $color-dark-mode;
-            }
-        
-            body.dark &{
-                background-color: $background-light-mode;
-                color: $color-light-mode;
+            @include mixins.responsive(900px){
+                display: none;
             }
 
-            p{
-                @include mixins.font(18px);
+            @include mixins.light_mode(){
+                background-color: $background-dark-mode;
+            }
+        
+            @include mixins.dark_mode(){
+                background-color: $background-light-mode;
+            }
+
+            img{
+                @include mixins.size(60px);
+                margin: 5px 0;
+            }
+        }
+
+        section:hover{
+            cursor: pointer;
+        }
+    }
+
+    .modes_responsive{
+        display: none;
+
+        @include mixins.responsive(900px){
+            display: block;
+        }
+
+        section{
+            @include mixins.size(25%);
+            border-radius: 0px 20% 20% 0px;
+
+            @include mixins.light_mode(){
+                background-color: $background-dark-mode;
+            }
+        
+            @include mixins.dark_mode(){
+                background-color: $background-light-mode;
+            }
+
+            img{
+                @include mixins.size(50px);
+                margin: 5px 0;
             }
         }
 
@@ -124,9 +161,18 @@ main{
         @include mixins.size(80%);
         margin: 30px 10px;
 
+        @include mixins.responsive(900px){
+            @include mixins.size(100%);
+        }
+
         section{
             @include mixins.size(85%);
             margin: 20px 0;
+
+            @include mixins.responsive(900px){
+                @include mixins.size(100%);
+                text-align: center
+            }
 
             h3{
                 @include mixins.font(20px, 800);
@@ -135,6 +181,58 @@ main{
             p{
                 @include mixins.font(20px);
                 margin: 5px 0;
+
+                @include mixins.responsive(900px){
+                    @include mixins.font(18px);
+                }
+            }
+
+            p + p{
+                @include mixins.responsive(900px){
+                    display: none;
+                }
+            }
+
+            img{
+                @include mixins.size(100%);
+            }
+
+            .first_grid{
+                margin-bottom: 60px;
+                height: 80vh;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                gap: 20px;
+
+                section{
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: 0 5px 10px rgba(20, 20, 20, 0.5);
+
+                    @include mixins.light_mode(){
+                        background-color: $background-header-light-mode;
+                    }
+                
+                    @include mixins.dark_mode(){
+                        background-color: $background-header-dark-mode;
+                    }
+
+                    h4{
+                        margin: 2% 3%;
+                        @include mixins.font(18px, 800);
+                    }
+
+                    p{
+                        margin: 2% 3%;
+                        @include mixins.font(18px);
+
+                        @include mixins.responsive(900px){
+                            @include mixins.font(16px);
+                        }
+                    }
+                }
             }
         }
     }
@@ -143,16 +241,14 @@ main{
 footer{
     padding: 20px 0;
 
-    body.bright &{
+    @include mixins.light_mode(){
         background-color: $background-light-mode;
-        color: $color-light-mode;
         box-shadow: $shadow-footer-light-mode;
     }
 
-    body.dark &{
+    @include mixins.dark_mode(){
         background-color: $background-header-dark-mode;
-        color: $color-dark-mode;
-        box-shadow: $shadow-dark-mode;
+
 
         p{
             a{
@@ -161,7 +257,33 @@ footer{
         }
     }
 
+    section{
+        display: flex;
+        justify-content: space-around;
+
+        div{
+            img{
+                @include mixins.size(150px);
+                @include mixins.responsive(900px){
+                    display: none
+                }
+                
+            }
+
+            .ratvisseur{
+                @include mixins.size(250px);
+                display: block;
+            }
+        }
+    }
+
     p{
         text-align: center;
+
+        br{
+            @media screen and (min-width : 900) {
+                display:none;
+            }
+        }
     }
 }

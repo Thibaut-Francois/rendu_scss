@@ -39,16 +39,20 @@ document.getElementById("btn9").addEventListener("click", function() {
 });
 
 
-document.getElementById("light_mode").addEventListener("click", function() {
+document.getElementsByClassName("light_mode").addEventListener("click", function() {
     if (document.getElementById("body").classList=="dark"){
 
         document.getElementById('body').classList.remove("dark");
         document.getElementById('body').classList.add("bright");
         console.log('noir -> blanc')
+
+        document.getElementsByClassName('btn_dark').src="img/moon_icon.png"
     }else{
 
         document.getElementById('body').classList.remove("bright");
         document.getElementById('body').classList.add("dark");
         console.log('blanc -> noir')
+
+        document.getElementsByClassName('btn_dark').src="img/sun_icon.png"
     }
 });
