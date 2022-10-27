@@ -12,6 +12,10 @@ a {
   font-weight: 500;
 }
 
+.sub_menu_class {
+  display: block !important;
+}
+
 header {
   padding: 15px 0;
   box-shadow: 0 5px 10px rgba(20, 20, 20, 0.2);
@@ -52,6 +56,7 @@ header .title h2 {
 
 main {
   display: flex;
+  scroll-behavior: smooth;
 }
 @media screen and (max-width: 900px) {
   main {
@@ -88,6 +93,14 @@ main .aside .sider ul li {
   font-size: 18px;
   font-weight: 500;
   margin: 8px 0;
+}
+body.bright main .aside .sider ul li a {
+  color: #000;
+  color: #000;
+}
+body.dark main .aside .sider ul li a {
+  color: #fff;
+  color: #fff;
 }
 main .aside .sider ul li:hover {
   cursor: pointer;
@@ -138,6 +151,7 @@ main .modes_responsive section {
   width: 25%;
   height: auto;
   border-radius: 0px 20% 20% 0px;
+  margin: 5% 0;
 }
 body.bright main .modes_responsive section {
   color: #000;
@@ -154,6 +168,37 @@ main .modes_responsive section img {
 }
 main .modes_responsive section:hover {
   cursor: pointer;
+}
+main .menu_burger {
+  display: none;
+  margin: 0 auto;
+}
+main .menu_burger section {
+  padding: 10px 15px;
+  box-shadow: 3px 3px 10px rgba(20, 20, 20, 0.2);
+  border-radius: 30px;
+}
+@media screen and (max-width: 900px) {
+  main .menu_burger section {
+    border: solid;
+    border-color: white;
+  }
+}
+main .menu_burger #sub_menu:hover {
+  cursor: pointer;
+}
+main .menu_burger .sub_menu_list {
+  box-shadow: none;
+  text-align: start;
+  display: none;
+}
+main .menu_burger .sub_menu_list ul li {
+  list-style-type: none;
+}
+@media screen and (max-width: 900px) {
+  main .menu_burger {
+    display: block;
+  }
 }
 main .content {
   width: 80%;
@@ -211,6 +256,15 @@ main .content section .first_grid {
   grid-template-rows: 1fr 1fr 1fr;
   gap: 20px;
 }
+@media screen and (max-width: 900px) {
+  main .content section .first_grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    width: 80% auto;
+    height: auto;
+  }
+}
 main .content section .first_grid section {
   width: 100%;
   height: 100%;
@@ -238,6 +292,11 @@ main .content section .first_grid section p {
   main .content section .first_grid section p {
     font-size: 16px;
     font-weight: 500;
+  }
+}
+@media screen and (max-width: 900px) {
+  main .content section .first_grid .responsive {
+    display: none;
   }
 }
 
